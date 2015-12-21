@@ -15,6 +15,6 @@ sudo mv squashfs-root edit
 sudo cp /etc/resolv.conf edit/etc/
 sudo mount --bind /dev/ edit/dev
 sudo chroot edit
-mount -t proc none /proc
-mount -t sysfs none /sys
-mount -t devpts none /dev/pts
+sudo mount -t proc none /proc
+sudo mount -t sysfs none /sys
+sudo mount -t devpts none /dev/pts
