@@ -3,7 +3,7 @@
 WORKDIR=livecdtmp
 mkdir -p $WORKDIR
 cd $WORKDIR
-wget http://localhost/iso/ubuntu-10.04-desktop-amd64.iso
+wget http://iso.morphic/iso/ubuntu-10.04-desktop-amd64.iso
 mkdir mnt
 sudo mount -o loop ubuntu-10.04-desktop-amd64.iso mnt
 mkdir extract-cd
