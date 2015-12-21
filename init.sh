@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 WORKDIR=livecdtmp
+FILENAME=ubuntu-10.04-amd64.iso
+
 mkdir -p $WORKDIR
 cd $WORKDIR
-wget http://iso.morphic/iso/ubuntu-10.04-desktop-amd64.iso
+wget http://iso.morphic/$FILENAME
 mkdir mnt
-sudo mount -o loop ubuntu-10.04-desktop-amd64.iso mnt
+sudo mount -o loop $FILENAME mnt
 mkdir extract-cd
 sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-cd
 sudo unsquashfs mnt/casper/filesystem.squashfs
