@@ -6,7 +6,7 @@ IMAGE_NAME=balaswecha-10.04-amd64.iso
 
 mkdir -p $WORKDIR
 cd $WORKDIR
-wget http://iso.morphic/$FILENAME
+wget --no-verbose http://iso.morphic/$FILENAME
 mkdir mnt
 sudo mount -o loop $FILENAME mnt
 mkdir extract-cd
@@ -20,10 +20,10 @@ sudo mount -t proc none /proc
 sudo mount -t sysfs none /sys
 sudo mount -t devpts none /dev/pts
 sudo umount /proc || sudo umount -lf /proc
-sudo umount /sys
-sudo umount /dev/pts
+sudo umount -lf /sys
+sudo umount -lf /dev/pts
 exit
-sudo umount edit/dev
+sudo umount -lf edit/dev
 chmod +w extract-cd/casper/filesystem.manifest
 sudo su
 chroot edit dpkg-query -W --showformat='${Package} ${Version}\n' > extract-cd/casper/filesystem.manifest
