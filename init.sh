@@ -18,3 +18,8 @@ sudo chroot edit
 sudo mount -t proc none /proc
 sudo mount -t sysfs none /sys
 sudo mount -t devpts none /dev/pts
+umount /proc || umount -lf /proc
+umount /sys
+umount /dev/pts
+exit
+sudo umount edit/dev
