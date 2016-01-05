@@ -25,7 +25,7 @@ sudo chroot edit /bin/bash /script.sh
 echo "Exitting chroot"
 sudo umount -lf edit/dev
 sudo chmod +w extract-cd/casper/filesystem.manifest
-sudo chroot edit sh -c 'dpkg-query -W --showformat='${Package} ${Version}\n' > extract-cd/casper/filesystem.manifest'
+sudo chroot edit dpkg-query -W --showformat='${Package} ${Version}\n' | sudo tee extract-cd/casper/filesystem.manifest
 echo "Done writing into manifest file"
 sudo cp extract-cd/casper/filesystem.manifest extract-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/ubiquity/d' extract-cd/casper/filesystem.manifest-desktop
