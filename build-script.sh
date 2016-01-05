@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-WORKDIR=livecdtmp
-FILENAME=ubuntu-14.04.3-desktop-amd64.iso
-IMAGE_NAME=balaswecha-14.04-amd64.iso
+WORKDIR=${WORKDIR-"livecdtmp"}
+FILENAME=${FILENAME-"ubuntu-14.04.3-desktop-amd64.iso"}
+IMAGE_NAME=${IMAGE_NAME-"balaswecha-14.04-amd64.iso"}
 
 mkdir -p $WORKDIR
 cd $WORKDIR
@@ -14,14 +14,16 @@ mkdir extract-cd
 sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-cd
 sudo unsquashfs mnt/casper/filesystem.squashfs
 echo "Unsquashing Done"
+sudo umount mnt
+echo "Unmounted iso"
 sudo mv squashfs-root edit
-sudo cp ../script.sh edit/
+sudo cp ../customization-script.sh edit/
 sudo cp ../sources.list edit/etc/apt/
 sudo cp /etc/resolv.conf edit/etc/
 sudo mount --bind /dev/ edit/dev
 echo "Entering chroot"
 
-sudo chroot edit /bin/bash /script.sh
+sudo chroot edit /bin/bash /customization-script.sh
 echo "Exitting chroot"
 sudo umount -lf edit/dev
 sudo chmod +w extract-cd/casper/filesystem.manifest
