@@ -6,7 +6,7 @@ IMAGE_NAME=balaswecha-14.04-amd64.iso
 
 mkdir -p $WORKDIR
 cd $WORKDIR
-cp ../$FILENAME .
+wget --no-verbose http://iso.morphic/$FILENAME
 mkdir mnt
 sudo mount -o loop $FILENAME mnt
 echo "Mounting Loop Done"
