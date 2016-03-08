@@ -24,7 +24,7 @@ sudo cp ../customization-script.sh edit/
 sudo cp ../assets/sources.list edit/etc/apt/
 sudo cp ../assets/pencilbox.desktop edit/usr/share/applications/
 sudo cp ../assets/pencilbox.png edit/usr/share/icons/
-sudo cp -R ~/build edit/
+sudo cp -R /home/bs/build edit/
 
 sudo cp /etc/resolv.conf edit/etc/
 sudo mount --bind /dev/ edit/dev
