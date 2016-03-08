@@ -21,13 +21,18 @@ sudo umount mnt
 echo "Unmounted iso"
 sudo mv squashfs-root edit
 sudo cp ../customization-script.sh edit/
-sudo cp ../sources.list edit/etc/apt/
+sudo cp ../assets/sources.list edit/etc/apt/
+sudo cp ../assets/pencilbox.desktop edit/usr/share/applications/
+sudo cp ../assets/pencilbox.png edit/usr/share/icons/
+sudo cp -R ~/build edit/
+
 sudo cp /etc/resolv.conf edit/etc/
 sudo mount --bind /dev/ edit/dev
 echo "Entering chroot"
 
 sudo chroot edit /bin/bash /customization-script.sh
 echo "Exitting chroot"
+sudo rm -rf edit/build
 sudo umount -lf edit/dev
 sudo chmod +w extract-cd/casper/filesystem.manifest
 sudo chroot edit dpkg-query -W --showformat='${Package} ${Version}\n' | sudo tee extract-cd/casper/filesystem.manifest
