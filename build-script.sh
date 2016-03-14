@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 WORKDIR=${WORKDIR-"livecdtmp"}
-FILENAME=${FILENAME-"ubuntu-14.04.3-desktop-amd64.iso"}
+FILENAME=${FILENAME-"ubuntu-14.04.4-desktop-amd64.iso"}
 IMAGE_NAME=${IMAGE_NAME-"balaswecha-14.04-amd64.iso"}
 
 if [ -d $WORKDIR ]; then
