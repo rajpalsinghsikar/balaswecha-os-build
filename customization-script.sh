@@ -12,7 +12,7 @@ apt-get install -y celestia geogebra kgeography kalzium kbruch stellarium step t
 
 # Move files
 cp -R /build/opt/* /opt/
-cp -R /build/var/www /var/
+cp -R /build/var/www/* /var/www/html/
 
 # Create Symlinks
 rm -rf /usr/bin/firefox

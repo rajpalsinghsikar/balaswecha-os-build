@@ -24,6 +24,10 @@ sudo cp ../customization-script.sh edit/
 sudo cp ../assets/sources.list edit/etc/apt/
 sudo cp ../assets/pencilbox.desktop edit/usr/share/applications/
 sudo cp ../assets/pencilbox.png edit/usr/share/icons/
+sudo cp ../assets/wallpapers/balaswecha-dark.png edit/usr/share/backgrounds/
+sudo cp ../assets/wallpapers/balaswecha-default.jpg edit/usr/share/backgrounds/
+sudo cp ../assets/balaswecha_skin.schema.override edit/usr/share/glib-2.0/schemas/
+
 sudo cp -R /home/bs/build edit/
 
 sudo cp /etc/resolv.conf edit/etc/

@@ -1,0 +1,11 @@
+[com.canonical.Unity.Launcher]
+favorites = ['application://pencilbox.desktop',
+'application://nautilus.desktop', 'application://chromium-browser.desktop',
+'application://libreoffice-writer.desktop',
+'application://libreoffice-calc.desktop',
+'application://libreoffice-impress.desktop', 'application://openshot.desktop',
+'application://audacity.desktop', 'unity://running-apps', 'unity://expo-icon',
+'unity://devices']
+
+[org.gnome.desktop.background]
+picture-uri = 'file:///usr/share/backgrounds/balaswecha-default.jpg'
