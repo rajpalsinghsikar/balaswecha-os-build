@@ -13,14 +13,17 @@ mkdir -p $CHROME_EXTN_ROOT
 
 # Install Packages
 apt-get update
-apt-get install -y nodejs nodejs-legacy npm apache2 libapache2-mod-php5 libapache2-mod-python openjdk-7-jre pepperflashplugin-nonfree
+#apt-get install apache2 libapache2-mod-php5 libapache2-mod-python
+apt-get install -y nodejs nodejs-legacy npm openjdk-7-jre pepperflashplugin-nonfree
 update-pepperflashplugin-nonfree --install
-apt-get install -y celestia geogebra kgeography kalzium kbruch stellarium step tuxmath openshot audacity chromium-browser openteacher khangman artha shutter tuxtype tuxpaint turtleart marble kazam calibre freemind gimp inkscape ubuntu-restricted-extras vlc kwordquiz kturtle gcompris klettres ibus-m17n
+apt-get install -y celestia geogebra kgeography kalzium kbruch stellarium step tuxmath openshot audacity chromium-browser openteacher khangman artha shutter tuxtype tuxpaint turtleart marble kazam calibre freemind gimp inkscape vlc kwordquiz kturtle gcompris klettres ibus-m17n
+echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+apt-get install -y ubuntu-restricted-extras
 #look at scratch2
 
 # Move files
 cp -R /build/opt/* /opt/
-cp -R /build/var/www/* /var/www/html/
+#cp -R /build/var/www/* /var/www/html/
 cp -R /build/mindmup/eealagocaipaflcjmeapmobpmilffopi $CHROME_EXTN_ROOT/
 cp /build/mindmup/chrome-eealagocaipaflcjmeapmobpmilffopi-Default.png /usr/share/icons/
 cp /build/mindmup/chrome-eealagocaipaflcjmeapmobpmilffopi-Default.desktop $DESKTOP_FILE_ROOT
@@ -40,8 +43,16 @@ cp $DESKTOP_FILE_ROOT/audacity.desktop $SKEL_DESKTOP_FILE_ROOT/
 cp $DESKTOP_FILE_ROOT/pencilbox.desktop $SKEL_DESKTOP_FILE_ROOT/
 cp $DESKTOP_FILE_ROOT/chrome-eealagocaipaflcjmeapmobpmilffopi-Default.desktop $SKEL_DESKTOP_FILE_ROOT/
 
+###### Branding Changes ########
+
 # Regenerate default Schemas
 glib-compile-schemas /usr/share/glib-2.0/schemas
+
+# Set the login background
+sudo xhost +SI:localuser:lightdm
+sudo su lightdm -s /bin/bash
+gsettings set com.canonical.unity-greeter draw-grid false
+gsettings set com.canonical.unity-greeter background '/usr/share/backgrounds/balaswecha-default.jpg'
 
 umount /proc || sudo umount -lf /proc
 umount -lf /sys

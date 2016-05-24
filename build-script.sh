@@ -39,6 +39,7 @@ sudo cp -f ../assets/plymouth/ubuntu_logo.png edit/lib/plymouth/
 sudo cp -f ../assets/plymouth/themes/text.plymouth edit/etc/alternatives/
 sudo cp -f ../assets/plymouth/themes/ubuntu-logo/* edit/lib/plymouth/themes/ubuntu-logo/
 sudo cp -f ../assets/plymouth/themes/ubuntu-text/* edit/lib/plymouth/themes/ubuntu-text/
+sudo rm -f edit/usr/share/unity-greeter/logo.png
 
 sudo cp /etc/resolv.conf edit/etc/
 sudo mount --bind /dev/ edit/dev
