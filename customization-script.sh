@@ -49,10 +49,10 @@ cp $DESKTOP_FILE_ROOT/chrome-eealagocaipaflcjmeapmobpmilffopi-Default.desktop $S
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 # Set the login background
-sudo xhost +SI:localuser:lightdm
-sudo su lightdm -s /bin/bash
-gsettings set com.canonical.unity-greeter draw-grid false
-gsettings set com.canonical.unity-greeter background '/usr/share/backgrounds/balaswecha-default.jpg'
+xhost +SI:localuser:lightdm
+su lightdm -s /bin/bash -c "gsettings set com.canonical.unity-greeter draw-grid false"
+su lightdm -s /bin/bash -c "gsettings set com.canonical.unity-greeter draw-user-backgrounds true"
+su lightdm -s /bin/bash -c "gsettings set com.canonical.unity-greeter background /usr/share/backgrounds/balaswecha-default.jpg"
 
 umount /proc || sudo umount -lf /proc
 umount -lf /sys
