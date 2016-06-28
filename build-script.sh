@@ -31,7 +31,7 @@ sudo cp -f ../assets/lsb-release edit/etc/
 sudo rm -rf edit/usr/share/ubiquity-slideshow/slides
 sudo cp -rf ../assets/ubiquity-slides edit/usr/share/ubiquity-slideshow/slides
 
-sudo cp -R /home/srujan/build edit/
+sudo cp -R ~/build edit/
 sudo cp -R ../assets/mindmup edit/build/
 sudo cp -R ../assets/Preferences edit/build/
 
