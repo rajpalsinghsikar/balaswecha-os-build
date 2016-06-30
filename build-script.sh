@@ -45,7 +45,7 @@ sudo cp -f ../assets/plymouth/themes/ubuntu-text/* edit/lib/plymouth/themes/ubun
 sudo rm -f edit/usr/share/unity-greeter/logo.png
 
 git clone https://github.com/balaswecha/pencilbox-2.git
-rsync --exclude=.git -a pencilbox-2 edit/build
+sudo rsync --exclude=.git -a pencilbox-2 edit/build
 
 sudo cp /etc/resolv.conf edit/etc/
 sudo mount --bind /dev/ edit/dev
