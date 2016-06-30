@@ -76,7 +76,7 @@ deluser test
 dbus-uuidgen >/var/lib/dbus/machine-id # needs to exist for running below commands
 su lightdm -s /bin/bash -c "gsettings set com.canonical.unity-greeter draw-grid false"
 su lightdm -s /bin/bash -c "gsettings set com.canonical.unity-greeter draw-user-backgrounds true"
-su lightdm -s /bin/bash -c "gsettings set com.canonical.unity-greeter background /usr/share/backgrounds/balaswecha-default.jpg"
+su lightdm -s /bin/bash -c "gsettings set com.canonical.unity-greeter background /usr/share/backgrounds/balaswecha-dark.png"
 
 umount /proc || sudo umount -lf /proc
 umount -lf /sys
