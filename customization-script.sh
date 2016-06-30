@@ -7,7 +7,7 @@ export HOME=/etc/skel
 DESKTOP_FILE_ROOT=/usr/share/applications
 SKEL_DESKTOP_FILE_ROOT=$HOME/.local/share/applications
 CHROME_EXTN_ROOT=$HOME/.config/chromium/Default/Extensions
-PENCILBOX_DIR="pencilbox-2-master"
+PENCILBOX_DIR="/build/pencilbox-2"
 
 mkdir -p $SKEL_DESKTOP_FILE_ROOT
 mkdir -p $CHROME_EXTN_ROOT
@@ -27,9 +27,6 @@ rm -f /var/cache/apt/archives/*.deb
 sed -i -e 's/var\/www\/html/var\/www/g' /etc/apache2/sites-available/000-default.conf
 
 # Pencilbox Setup
-wget https://github.com/balaswecha/pencilbox-2/archive/master.zip
-unzip master.zip
-#rm -rf /var/www
 mv $PENCILBOX_DIR/app/* /var/www/
 mv /var/app /var/www
 chown -R www-data:www-data /var/www
