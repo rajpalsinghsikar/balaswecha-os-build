@@ -8,6 +8,7 @@ DESKTOP_FILE_ROOT=/usr/share/applications
 SKEL_DESKTOP_FILE_ROOT=$HOME/.local/share/applications
 CHROME_EXTN_ROOT=$HOME/.config/chromium/Default/Extensions
 PENCILBOX_DIR="/build/pencilbox-2"
+YOUTUBE_EXTENSION_URL=${YOUTUBE_EXTENSION_URL-"https://addons.mozilla.org/firefox/downloads/latest/463677/addon-463677-latest.xpi"}
 
 mkdir -p $SKEL_DESKTOP_FILE_ROOT
 mkdir -p $CHROME_EXTN_ROOT
@@ -18,23 +19,51 @@ apt-get install -y apache2 nodejs nodejs-legacy npm openjdk-7-jre pepperflashplu
 update-pepperflashplugin-nonfree --install
 apt-get install -y celestia geogebra kgeography kalzium kbruch stellarium step tuxmath openshot audacity chromium-browser openteacher khangman artha shutter tuxtype tuxpaint turtleart marble kazam calibre freemind gimp inkscape vlc kwordquiz kturtle gcompris klettres ibus-m17n
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+
+#installing firefox browser
+apt-get install firefox
+
+# installing simulations deb packages
+apt-get install balaswecha-apps
+
+# installing videos deb package
+apt-get install balaswecha-videos
+
+# installing pencilbox deb package
+apt-get install pencilbox
+
+#instaling balaswceha-skin deb package
+
+apt-get install balaswecha-skin
+
+
+# install freemind
+apt-get install freemind
+
 apt-get install -y ubuntu-restricted-extras
 
-rm -f /var/cache/apt/archives/*.deb
+# adding youtube extension in firefox
+sudo wget $YOUTUBE_EXTENSION_URL
+mv addon-463677-latest.xpi \{b9acf540-acba-11e1-8ccb-oo1fd0e08bd4}.xpi
+sudo chmod 755 \{b9acf540-acba-11e1-8ccb-oo1fd0e08bd4\}.xpi
+sudo cp ./\{b9acf540-acba-11e1-8ccb-oo1fd0e08bd4\}.xpi  /usr/lib/firefox/browser/extensions/
+
+apt-get clean
+#rm -f /var/cache/apt/archives/*.deb
 #look at scratch2
 
 # Configuration changes
-sed -i -e 's/var\/www\/html/var\/www/g' /etc/apache2/sites-available/000-default.conf
+#sed -i -e 's/var\/www\/html/var\/www/g' /etc/apache2/sites-available/000-default.conf
 
-# Pencilbox Setup
-mv $PENCILBOX_DIR/app/* /var/www/
-mv /var/app /var/www
-chown -R www-data:www-data /var/www
-mv $PENCILBOX_DIR /opt/electron
-sed -i "/mainWindow.loadURL/c\mainWindow.loadURL('http:\/\/localhost');" /opt/electron/main.js
-sed -i "/\/js\/BalaSwechaInitialData.txt/c\var dumpFile = '\/var\/www\/js\/BalaSwechaInitialData.txt';" /var/www/js/pre-populator.js
-cd /opt/electron
-npm install
+## Pencilbox Setup
+#mv $PENCILBOX_DIR/app/* /var/www/
+#mv /var/app /var/www
+#chown -R www-data:www-data /var/www
+#mv $PENCILBOX_DIR /opt/electron
+#sed -i "/mainWindow.loadURL/c\mainWindow.loadURL('http:\/\/localhost');" /opt/electron/main.js
+#sed -i "/\/js\/BalaSwechaInitialData.txt/c\var dumpFile = '\/var\/www\/js\/BalaSwechaInitialData.txt';" /var/www/js/pre-populator.js
+#cd /opt/electron
+#npm install
 
 # Move files
 cp -R /build/opt/* /opt/
@@ -44,11 +73,11 @@ cp /build/mindmup/chrome-eealagocaipaflcjmeapmobpmilffopi-Default.desktop $DESKT
 chmod 644 $DESKTOP_FILE_ROOT/chrome-eealagocaipaflcjmeapmobpmilffopi-Default.desktop
 chmod 644 /usr/share/icons/chrome-eealagocaipaflcjmeapmobpmilffopi-Default.png
 cp /build/Preferences $CHROME_EXTN_ROOT/../
-mv /build/videos /var/www/
+#mv /build/videos /var/www/
 
 # Create Symlinks
-rm -rf /usr/bin/firefox
-ln -s /usr/bin/chromium-browser /usr/bin/firefox
+#rm -rf /usr/bin/firefox
+#ln -s /usr/bin/chromium-browser /usr/bin/firefox
 ln -s /usr/bin/libreoffice /usr/bin/doc-reader
 ln -s /usr/bin/evince /usr/bin/pdf-reader
 

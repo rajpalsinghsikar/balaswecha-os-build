@@ -31,11 +31,9 @@ sudo cp -f ../assets/lsb-release edit/etc/
 sudo rm -rf edit/usr/share/ubiquity-slideshow/slides
 sudo cp -rf ../assets/ubiquity-slides edit/usr/share/ubiquity-slideshow/slides
 
-sudo rm edit/usr/share/backgrounds/warty-final-ubuntu.png
-sudo cp ../assets/warty-final-ubuntu.png edit/usr/share/backgrounds/
 
 sudo cp -R ~/build edit/
-sudo cp -R ../assets/mindmup edit/build/
+#sudo cp -R ../assets/mindmup edit/build/
 sudo cp -R ../assets/Preferences edit/build/
 
 sudo cp -f ../assets/plymouth/ubuntu_logo.png edit/lib/plymouth/
@@ -43,9 +41,6 @@ sudo cp -f ../assets/plymouth/themes/text.plymouth edit/etc/alternatives/
 sudo cp -f ../assets/plymouth/themes/ubuntu-logo/* edit/lib/plymouth/themes/ubuntu-logo/
 sudo cp -f ../assets/plymouth/themes/ubuntu-text/* edit/lib/plymouth/themes/ubuntu-text/
 sudo rm -f edit/usr/share/unity-greeter/logo.png
-
-git clone https://github.com/balaswecha/pencilbox-2.git
-sudo rsync --exclude=.git -a pencilbox-2 edit/build
 
 sudo cp /etc/resolv.conf edit/etc/
 sudo mount --bind /dev/ edit/dev

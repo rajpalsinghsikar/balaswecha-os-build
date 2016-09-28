@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Version=1.0
 Name=PencilBox-Electron
-Exec=/opt/electron/node_modules/electron-prebuilt/dist/electron --disable-http-cache /opt/electron/main.js
+Exec=pencilbox
 Icon=pencilbox.png
 Terminal=false
 Type=Application
