@@ -21,20 +21,12 @@ sudo umount mnt
 echo "Unmounted iso"
 sudo mv squashfs-root edit
 sudo cp ../customization-script.sh edit/
+sudo cp ../firefox-addon-installer.sh edit/
 sudo cp ../assets/sources.list edit/etc/apt/
-sudo cp ../assets/pencilbox.desktop edit/usr/share/applications/
-sudo cp ../assets/pencilbox.png edit/usr/share/icons/
-sudo cp ../assets/wallpapers/balaswecha-dark.png edit/usr/share/backgrounds/
-sudo cp ../assets/wallpapers/balaswecha-default.jpg edit/usr/share/backgrounds/
 sudo cp ../assets/balaswecha_skin.gschema.override edit/usr/share/glib-2.0/schemas/
 sudo cp -f ../assets/lsb-release edit/etc/
 sudo rm -rf edit/usr/share/ubiquity-slideshow/slides
 sudo cp -rf ../assets/ubiquity-slides edit/usr/share/ubiquity-slideshow/slides
-
-
-sudo cp -R ~/build edit/
-#sudo cp -R ../assets/mindmup edit/build/
-sudo cp -R ../assets/Preferences edit/build/
 
 sudo cp -f ../assets/plymouth/ubuntu_logo.png edit/lib/plymouth/
 sudo cp -f ../assets/plymouth/themes/text.plymouth edit/etc/alternatives/
@@ -48,8 +40,8 @@ echo "Entering chroot"
 
 sudo chroot edit /bin/bash /customization-script.sh
 echo "Exitting chroot"
-sudo rm -rf edit/build
 sudo rm -f edit/customization-script.sh
+sudo rm -f edit/firefox-addon-installer.sh
 sudo umount -lf edit/dev
 sudo chmod +w extract-cd/casper/filesystem.manifest
 sudo chroot edit dpkg-query -W --showformat='${Package} ${Version}\n' | sudo tee extract-cd/casper/filesystem.manifest
